@@ -45,6 +45,7 @@ mavenNode {
 if (utils.isCD()) {
   node {
     stage('Rollout to Stage') {
+      stash includes: '**/*.yml', name: stashName
       unstash stashName
       setupScript?.setupEnvironmentPre(envStage)
       apply {
